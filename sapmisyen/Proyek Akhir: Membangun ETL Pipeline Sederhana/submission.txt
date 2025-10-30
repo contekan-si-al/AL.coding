@@ -1,0 +1,47 @@
+Nama: AL.
+Email: al.emailkerja@gmail.com
+
+Deskripsi Submission:
+- ETL Pipeline untuk website Fashion Studio
+- Data diambil dari https://fashion-studio.dicoding.dev/
+- Transformasi termasuk konversi mata uang, pembersihan data, dan standardisasi format
+- Data disimpan dalam 3 repositori: CSV, Google Sheets, dan PostgreSQL
+- Unit test coverage >80%
+
+Link Google Sheets: https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?usp=sharing
+Detail PostgreSQL: postgresql+psycopg2://{username_kamu}:{password_kamu}@{localhost}:{5432}/{database_kamu} *lokasi ada di utils/load.py dan tests/test_load.py
+
+Fitur yang diimplementasi:
+✅ Extract dari website
+✅ Transform data dengan konversi USD to IDR (Rp16.000)
+✅ Hapus duplikat, null, dan data invalid
+✅ Tambah kolom timestamp
+✅ Simpan ke CSV, Google Sheets, dan PostgreSQL
+✅ Unit test dengan coverage tinggi
+✅ Error handling
+✅ Modular code structure
+
+
+Cara menjalankan: *Windows + VS Code (Anaconda) + Terminal Git Bash
+1. Set up virtual environment
+    python -m venv venv
+    source D:/AL/venv/Scripts/activate (D:/AL/ bisa disesuaikan dengan lokasi penyimpanan folder)
+
+2. Install Dependency
+    pip install -r requirements.txt
+
+3. Setup environment
+    - Buat file .env dengan isi:
+      SPREADSHEET_ID=spreadsheet_id_kamu
+      * Spreadsheet ID adalah teks antara /d/ dan /edit pada URL. Contoh: https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit
+    - Cara lain bisa dengan membuka berkas ".env.example" | Replace "spreadsheet_id_kamu" dengan hasil copy "SPREADSHEET_ID" | jalankan kode "cp .env.example .env" di terminal
+    - Siapkan google-sheets-api.json untuk Google Sheets
+      * Cara mendapatkan berkas sudah dipelajari di dalam Modul. Hanya mengganti nama hasil unduhan ke "google-sheets-api"
+4. Run ETL script
+    python main.py
+
+5. Run unit test
+    pytest tests/ -v
+
+6. Run test coverage
+    pytest tests/ --cov=tests --cov-report=term-missing
